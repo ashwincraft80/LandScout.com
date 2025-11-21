@@ -1,0 +1,558 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord - Premium Real Estate Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function calculateEMI() {
+            // Get input values
+            const loanAmountStr = document.getElementById('loanAmount').value.replace(/[₹,\s]/g, '');
+            const loanAmount = parseFloat(loanAmountStr);
+            const annualRate = parseFloat(document.getElementById('interestRate').value);
+            const tenureYears = parseFloat(document.getElementById('loanTenure').value);
+            
+            // Calculate monthly interest rate
+            const monthlyRate = annualRate / (12 * 100);
+            
+            // Calculate tenure in months
+            const tenureMonths = tenureYears * 12;
+            
+            // EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
+            const emi = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths) / (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+            
+            // Display result
+            const resultDiv = document.getElementById('emiResult');
+            resultDiv.innerHTML = `
+                <p style="color: #666; margin-bottom: 0.5rem;">Monthly EMI</p>
+                <p style="font-size: 2rem; font-weight: bold; color: #2563eb;">₹${Math.round(emi).toLocaleString('en-IN')}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Landlord</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#buy">Buy</a></li>
+                <li><a href="#rent">Rent</a></li>
+                <li><a href="#sell">Sell</a></li>
+                <li><a href="#loans">Home Loans</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-main" id="home">
+        <div class="hero-overlay">
+            <h1>Find Your Perfect<br><span style="color: #60a5fa;">Dream Home</span></h1>
+            <p>Discover thousands of verified properties across India. Whether you're buying, renting, or selling, we make your property journey easier</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">🔍 Start Your Search</button>
+                <button class="btn btn-watch">▶ Watch Demo</button>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat-item">
+                    <h3>5,500+</h3>
+                    <p>Verified Properties</p>
+                </div>
+                <div class="hero-stat-item">
+                    <h3>50K+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="hero-stat-item">
+                    <h3>25+</h3>
+                    <p>Cities Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Search Section -->
+    <section class="hero" id="buy">
+        <h1>Find Your Perfect Property</h1>
+        <p>Search through thousands of verified properties with advanced filters to find exactly what you're looking for</p>
+        
+        <div class="advanced-search-form">
+            <div class="search-row">
+                <div class="search-field">
+                    <label>Transaction Type</label>
+                    <div class="button-group">
+                        <button class="btn-filter active">Buy</button>
+                        <button class="btn-filter">Rent</button>
+                        <button class="btn-filter">Lease</button>
+                    </div>
+                </div>
+                <div class="search-field">
+                    <label>Property Type</label>
+                    <select class="search-select">
+                        <option>All Types</option>
+                        <option>Apartment</option>
+                        <option>Villa</option>
+                        <option>Plot</option>
+                        <option>Commercial</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Location</label>
+                    <input type="text" placeholder="📍 City, Locality, Landmark" class="search-input">
+                </div>
+                <div class="search-field">
+                    <label>Budget Range</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <select class="search-select" style="width: 50%;">
+                            <option>Min</option>
+                            <option>₹10L</option>
+                            <option>₹25L</option>
+                            <option>₹50L</option>
+                            <option>₹1Cr</option>
+                        </select>
+                        <select class="search-select" style="width: 50%;">
+                            <option>Max</option>
+                            <option>₹50L</option>
+                            <option>₹1Cr</option>
+                            <option>₹2Cr</option>
+                            <option>₹5Cr+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-row">
+                <div class="search-field">
+                    <label>Bedrooms</label>
+                    <select class="search-select">
+                        <option>Any</option>
+                        <option>1 BHK</option>
+                        <option>2 BHK</option>
+                        <option>3 BHK</option>
+                        <option>4+ BHK</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Bathrooms</label>
+                    <select class="search-select">
+                        <option>Any</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3+</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>RERA Approved</label>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem;">
+                        <input type="checkbox" id="rera" style="width: 20px; height: 20px;">
+                        <label for="rera" style="margin: 0; cursor: pointer;">Only RERA approved properties</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">
+                🔍 Search Properties
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>2,300+</h3>
+            <p>Properties</p>
+        </div>
+        <div class="stat-item">
+            <h3>650+</h3>
+            <p>Properties Sold</p>
+        </div>
+        <div class="stat-item">
+            <h3>1,200+</h3>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+            <h3>800+</h3>
+            <p>Properties Rented</p>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="section" id="rent">
+        <div class="section-header">
+            <h2>Featured Properties</h2>
+            <p>Discover our handpicked selection of premium properties across prime locations</p>
+        </div>
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-image">
+                    <span class="property-badge">Featured</span>
+                </div>
+                <div class="property-info">
+                    <h3 class="property-title">Luxury 3BHK Apartment in Prime Location</h3>
+                    <p class="property-location">📍 Koramangala, Bangalore</p>
+                    <p class="property-price">₹1.2 Cr</p>
+                    <div class="property-details">
+                        <span>3 Bed</span>
+                        <span>2 Bath</span>
+                        <span>1,450 sq ft</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <span class="property-badge rera">RERA Approved</span>
+                </div>
+                <div class="property-info">
+                    <h3 class="property-title">Premium Plot in Developing Area</h3>
+                    <p class="property-location">📍 Electronic City, Bangalore</p>
+                    <p class="property-price">₹45 L</p>
+                    <div class="property-details">
+                        <span>2,400 sq ft</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    <span class="property-badge">Featured</span>
+                </div>
+                <div class="property-info">
+                    <h3 class="property-title">Farmhouse with Organic Farm Setup</h3>
+                    <p class="property-location">📍 Devanahalli, Bangalore</p>
+                    <p class="property-price">₹1.5 Cr</p>
+                    <div class="property-details">
+                        <span>5 Bed</span>
+                        <span>3 Bath</span>
+                        <span>3,500 sq ft</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn btn-secondary">View All Properties</button>
+        </div>
+    </section>
+
+    <!-- Sell Your Property Section -->
+    <section class="section" id="sell" style="background: white;">
+        <div class="section-header">
+            <h2>Sell Your Property</h2>
+            <p>List your property with us and reach thousands of verified buyers</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                <div>
+                    <div style="width: 80px; height: 80px; background: #e0e7ff; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📝</div>
+                    <h3 style="margin-bottom: 0.5rem;">List for Free</h3>
+                    <p style="color: #666;">No upfront costs to list your property</p>
+                </div>
+                <div>
+                    <div style="width: 80px; height: 80px; background: #e0e7ff; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📸</div>
+                    <h3 style="margin-bottom: 0.5rem;">Professional Photos</h3>
+                    <p style="color: #666;">Free photography service for listings</p>
+                </div>
+                <div>
+                    <div style="width: 80px; height: 80px; background: #e0e7ff; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👥</div>
+                    <h3 style="margin-bottom: 0.5rem;">Verified Buyers</h3>
+                    <p style="color: #666;">Connect with serious, verified buyers only</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">List Your Property</button>
+        </div>
+    </section>
+
+    <!-- Home Loans Section -->
+    <section class="home-loans" id="loans">
+        <div class="home-loans-content">
+            <div class="section-header">
+                <h2>Home Loans Made Easy</h2>
+                <p>Get the best home loan options, competitive interest rates and quick approvals with zero hassle</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start;">
+                <!-- Left Side - Loan Services -->
+                <div class="loans-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="loan-card">
+                        <div class="loan-icon">🧮</div>
+                        <h3>EMI Calculator</h3>
+                        <p>Calculate your monthly EMI with our easy-to-use calculator</p>
+                    </div>
+                    <div class="loan-card">
+                        <div class="loan-icon">✓</div>
+                        <h3>Eligibility Check</h3>
+                        <p>Check your loan eligibility in just 2 minutes</p>
+                    </div>
+                    <div class="loan-card">
+                        <div class="loan-icon">%</div>
+                        <h3>Best Interest Rates</h3>
+                        <p>Get competitive interest rates starting from 8.5% per annum</p>
+                    </div>
+                    <div class="loan-card">
+                        <div class="loan-icon">⚡</div>
+                        <h3>Quick Approval</h3>
+                        <p>Get pre-approved loans in days, not weeks</p>
+                    </div>
+                </div>
+
+                <!-- Right Side - Quick EMI Calculator -->
+                <div class="emi-calculator-widget">
+                    <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.8rem;">Quick EMI Calculator</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Loan Amount</label>
+                            <input type="text" id="loanAmount" value="₹ 50,00,000" class="calc-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Interest Rate (% per annum)</label>
+                            <input type="text" id="interestRate" value="8.5" class="calc-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Tenure (Years)</label>
+                            <input type="text" id="loanTenure" value="20" class="calc-input">
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateEMI()" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">Calculate EMI</button>
+                        <div id="emiResult" class="emi-result">
+                            <p style="color: #666; margin-bottom: 0.5rem;">Monthly EMI</p>
+                            <p style="font-size: 2rem; font-weight: bold; color: #2563eb;">₹41,815</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banking Partners -->
+    <section class="partners">
+        <div class="partners-content">
+            <h2>Our Banking Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-logo">SBI<br><small>Special Rate</small></div>
+                <div class="partner-logo">HDFC<br><small>Verified Lender</small></div>
+                <div class="partner-logo">ICICI<br><small>Verified Lender</small></div>
+                <div class="partner-logo">Axis Bank<br><small>Special Rate</small></div>
+                <div class="partner-logo">Kotak<br><small>Special Offer</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section" id="support">
+        <div class="help-content">
+            <div class="section-header">
+                <h2>Need Help? We're Here for You</h2>
+                <p>Get expert assistance at every step of your property journey</p>
+            </div>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="help-icon">❓</div>
+                    <h3>FAQ</h3>
+                    <p>Find answers to common questions</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;">Browse FAQ</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Start Live Chat</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">📞</div>
+                    <h3>Call Support</h3>
+                    <p>Speak directly with our property experts</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;">Call Now</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">📋</div>
+                    <h3>Property Guides</h3>
+                    <p>Learn about buying, selling and renting</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;">Read Guides</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-content">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I verify if a property is RERA approved?</div>
+                <div class="faq-answer">You can verify RERA approval using our project registration search tool. Simply enter the RERA ID mentioned in the property listing to verify authenticity.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What documents do I need for property purchase?</div>
+                <div class="faq-answer">You'll need identity proof, address proof, income documents, and bank statements. Our team will guide you through the complete documentation process.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can I schedule a property visit?</div>
+                <div class="faq-answer">You can schedule visits through our website, app, or by calling our support team. We offer virtual tours and in-person visits at your convenience.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are the charges for using Landlord services?</div>
+                <div class="faq-answer">Our basic search and listing services are free. We charge a small commission on successful transactions to maintain our quality of service.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="about">
+        <div class="testimonials-content">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Join thousands of satisfied customers who have found their perfect property with Landlord</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">Finding my dream home was made incredibly smooth. The entire verification listing and competitive pricing made the decision easy. Highly recommend!</p>
+                    <p class="testimonial-author">Priya Sharma</p>
+                    <p class="testimonial-role">Home Buyer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">I was amazed by how seamless the entire process was - from property search to final paperwork. The support team was always available to help. Excellent platform!</p>
+                    <p class="testimonial-author">Rajesh Kumar</p>
+                    <p class="testimonial-role">Property Investor</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">Selling my flat was faster than expected. I liked the transparency with the process. The home loan assistance was transparent and hassle-free. Great service!</p>
+                    <p class="testimonial-author">Anita Patel</p>
+                    <p class="testimonial-role">First-Time Buyer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">Best experience in renting a property! Landlord's verified listings and efficient customer service made my relocation hassle-free and highly professional!</p>
+                    <p class="testimonial-author">Vikram Singh</p>
+                    <p class="testimonial-role">Property Seeker</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/News Section -->
+    <section class="section" id="news" style="background: #f8fafc;">
+        <div class="section-header">
+            <h2>Latest Real Estate News & Insights</h2>
+            <p>Stay updated with the latest trends, legal updates, and expert insights</p>
+        </div>
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-image" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    📊
+                </div>
+                <div class="property-info">
+                    <span class="property-badge" style="position: static; display: inline-block; margin-bottom: 0.5rem;">Real Estate</span>
+                    <p style="color: #666; font-size: 0.85rem; margin-bottom: 0.5rem;">Dec 18, 2024 • 5 min read</p>
+                    <h3 class="property-title">Real Estate Market Trends: What to Expect in 2024</h3>
+                    <p style="color: #666; margin: 1rem 0; line-height: 1.6;">Comprehensive analysis of current market conditions and future projections across major Indian cities...</p>
+                    <button class="btn btn-secondary" style="width: 100%;">Read More</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    📋
+                </div>
+                <div class="property-info">
+                    <span class="property-badge rera" style="position: static; display: inline-block; margin-bottom: 0.5rem;">RERA Updates</span>
+                    <p style="color: #666; font-size: 0.85rem; margin-bottom: 0.5rem;">Dec 15, 2024 • 7 min read</p>
+                    <h3 class="property-title">RERA Guidelines: Everything Property Buyers Should Know</h3>
+                    <p style="color: #666; margin: 1rem 0; line-height: 1.6;">Complete guide to RERA laws and buyer's rights. Learn how RERA protects homebuyers and ensures transparency...</p>
+                    <button class="btn btn-secondary" style="width: 100%;">Read More</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    🏠
+                </div>
+                <div class="property-info">
+                    <span class="property-badge" style="position: static; display: inline-block; margin-bottom: 0.5rem; background: #f59e0b;">Finance</span>
+                    <p style="color: #666; font-size: 0.85rem; margin-bottom: 0.5rem;">Dec 10, 2024 • 4 min read</p>
+                    <h3 class="property-title">Home Loan Interest Rates: Best Deals This Month</h3>
+                    <p style="color: #666; margin: 1rem 0; line-height: 1.6;">Compare the best home loan rates from top banks. Find the most competitive interest rates, offers, and tips...</p>
+                    <button class="btn btn-secondary" style="width: 100%;">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn btn-primary">View All Articles</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="logo">Landlord</h3>
+                <p style="color: #94a3b8; margin-top: 1rem;">Your trusted partner in finding, buying, and selling properties across India.</p>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">in</a>
+                    <a href="#">ig</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">All Cities</a></li>
+                    <li><a href="#">Property</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Careers at Landlord</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Buy Property</a></li>
+                    <li><a href="#">Rent Property</a></li>
+                    <li><a href="#">Sell Property</a></li>
+                    <li><a href="#">Plot & Land</a></li>
+                    <li><a href="#">Projects Management</a></li>
+                    <li><a href="#">Investment Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Popular Cities</h3>
+                <ul>
+                    <li><a href="#">Bangalore</a></li>
+                    <li><a href="#">Delhi</a></li>
+                    <li><a href="#">Mumbai</a></li>
+                    <li><a href="#">Pune</a></li>
+                    <li><a href="#">Hyderabad</a></li>
+                    <li><a href="#">Chennai</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <p style="color: #94a3b8;">Call Us</p>
+                <p style="color: white; font-weight: 600;">+91 (800) 123-4567</p>
+                <p style="color: #94a3b8; margin-top: 1rem;">Email</p>
+                <p style="color: white;">contact@landlord.com</p>
+                <p style="color: #94a3b8; margin-top: 1rem;">Visit Us</p>
+                <p style="color: white;">456 Business Park, Gurgaon, Haryana 122001</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Landlord. All rights reserved. | Powered by Weebify</p>
+        </div>
+    </footer>
+</body>
+</html>
