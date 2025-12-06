@@ -1,0 +1,415 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #eef3f6;
+  color: #222;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #ffffff;
+  padding: 14px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2a7d6a;
+}
+
+.menu {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.post-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #2a7d6a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #2a7d6a;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* HERO */
+.hero {
+  padding: 50px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  color: #204d45;
+}
+
+.hero-text p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* SEARCH CARD */
+.search-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-card h3 {
+  margin-bottom: 10px;
+}
+
+.search-card input,
+.search-card select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cdd6db;
+}
+
+.search-btn {
+  padding: 10px;
+  background: #2a7d6a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* TRENDING AREA */
+.section {
+  padding: 32px 0;
+}
+
+.title {
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+  color: #204d45;
+}
+
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.area-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+  color: #2a7d6a;
+  border: 1px solid #dfe8ec;
+}
+
+/* PROPERTY GRID */
+.light {
+  background: #ffffff;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.p-card {
+  background: #f7fafb;
+  border-radius: 14px;
+  padding-bottom: 16px;
+  border: 1px solid #e3e9ec;
+}
+
+.p-img {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+}
+
+.p-card h3 {
+  padding: 12px;
+  font-size: 1rem;
+  color: #204d45;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #666;
+  padding: 0 12px;
+}
+
+.price {
+  padding: 0 12px;
+  font-weight: 700;
+  color: #2a7d6a;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  padding: 18px 0;
+  background: #204d45;
+  color: #d9ece7;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.f-links {
+  display: flex;
+  gap: 14px;
+}
+
+.f-links a {
+  color: #d9ece7;
+  text-decoration: none;
+}
+
+/* DARK MODE STATES */
+body.dark {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body.dark .navbar {
+  background: #020617;
+  box-shadow: none;
+}
+
+body.dark .brand {
+  color: #38bdf8;
+}
+
+body.dark .menu a {
+  color: #e5e7eb;
+}
+
+body.dark .post-btn {
+  background: #38bdf8;
+  color: #020617;
+}
+
+body.dark .theme-btn {
+  border-color: #e5e7eb;
+  color: #e5e7eb;
+}
+
+body.dark .hero-text h1 {
+  color: #e5e7eb;
+}
+
+body.dark .hero-text p {
+  color: #cbd5f5;
+}
+
+body.dark .search-card {
+  background: #0f172a;
+  box-shadow: none;
+}
+
+body.dark .search-card input,
+body.dark .search-card select {
+  background: #020617;
+  border-color: #1e293b;
+  color: #e5e7eb;
+}
+
+body.dark .section {
+  background: #020617;
+}
+
+body.dark .light {
+  background: #020617;
+}
+
+body.dark .area-card {
+  background: #0b1220;
+  border-color: #1f2937;
+  color: #e5e7eb;
+}
+
+body.dark .p-card {
+  background: #0b1220;
+  border-color: #1f2937;
+}
+
+body.dark .p-card h3 {
+  color: #e5e7eb;
+}
+
+body.dark .meta {
+  color: #9ca3af;
+}
+
+body.dark .price {
+  color: #38bdf8;
+}
+
+body.dark .footer {
+  background: #020617;
+  color: #9ca3af;
+}
+
+body.dark .f-links a {
+  color: #e5e7eb;
+}
+/* HERO BACKGROUND IMAGE */
+.hero {
+  position: relative;
+  height: 75vh;       /* page ko bada karega */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 0;         /* default padding hata diya */
+}
+
+.hero-bg {
+  background-image: url("https://plus.unsplash.com/premium_photo-1661962911608-ea55ac7785da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  width: 90%;
+  max-width: 1100px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background: #2a7d6a;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+/* BUY PAGE HERO */
+.buy-hero {
+  height: 60vh;
+  background-image: url("https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?q=80&w=1600");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.buy-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.buy-content {
+  position: relative;
+  z-index: 10;
+  color: white;
+}
+
+.buy-content h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.buy-content p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* CATEGORY GRID */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.cat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cat-card:hover {
+  background: #2a7d6a;
+  color: white;
+}
+
+
+
