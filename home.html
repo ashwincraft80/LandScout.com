@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Landscout — Homes that feel right</title>
+  <link rel="stylesheet" href="ashwin.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <div class="brand">Landscout</div>
+
+      <nav class="menu">
+        <a href="#">Explore</a>
+        <a href="buy.html">Buy</a>
+        <a href="#">Rent</a>
+        <a href="#">Contact</a>
+        <button class="post-btn">List Property</button>
+        <button id="themeToggle" class="theme-btn">Dark mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Find a place you’ll love to live in</h1>
+        <p>Smart search, zero fluff. Just clean listings that actually help.</p>
+      </div>
+
+      <div class="search-card">
+        <h3>Start Your Search</h3>
+
+        <label for="locationInput">Location</label>
+        <input id="locationInput" type="text" placeholder="City, area, or project">
+
+        <label for="typeSelect">Property Type</label>
+        <select id="typeSelect">
+          <option>Flat / Apartment</option>
+          <option>House</option>
+          <option>Villa</option>
+          <option>Plot</option>
+        </select>
+
+        <label for="budgetSelect">Budget</label>
+        <select id="budgetSelect">
+          <option>Any</option>
+          <option>Under ₹25 Lakh</option>
+          <option>₹25L - ₹50L</option>
+          <option>₹50L - ₹1Cr</option>
+          <option>Above ₹1Cr</option>
+        </select>
+
+        <button id="searchBtn" class="search-btn">Search Properties</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING AREAS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Trending Areas</h2>
+
+      <div class="area-grid">
+        <div class="area-card">Delhi</div>
+        <div class="area-card">Sonipat</div>
+        <div class="area-card">Varanasi</div>
+        <div class="area-card">Jaipur</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED HOMES -->
+  <section class="section light">
+    <div class="container">
+      <h2 class="title">Featured Homes</h2>
+
+      <div class="property-grid">
+
+        <!-- DELHI -->
+<div class="p-card">
+  <img class="p-img" 
+       src="https://images.unsplash.com/photo-1695667424131-a9680e0307ee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       alt="Delhi Home">
+  <h3>2 BHK in Dwarka</h3>
+  <p class="meta">Delhi • 1100 sq.ft</p>
+  <p class="price">₹95 Lakh</p>
+</div>
+
+
+        <!-- SONIPAT -->
+<div class="p-card">
+  <img class="p-img" 
+       src="https://plus.unsplash.com/premium_photo-1681550097108-187abe10d445?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       alt="Sonipat Home">
+  <h3>3 BHK in Kundli</h3>
+  <p class="meta">Sonipat • 1450 sq.ft</p>
+  <p class="price">₹72 Lakh</p>
+</div>
+
+
+        <!-- VARANASI -->
+<div class="p-card">
+  <img class="p-img"
+       src="https://images.unsplash.com/photo-1665413791165-b25d42542b80?q=80&w=3177&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       alt="Varanasi Home">
+  <h3>2 BHK near Assi Ghat</h3>
+  <p class="meta">Varanasi • 900 sq.ft</p>
+  <p class="price">₹58 Lakh</p>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <p>© 2025 Landscout</p>
+      <div class="f-links">
+        <a href="#">About</a>
+        <a href="#">Support</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+  <section class="hero hero-bg">
+  <div class="overlay"></div>
+
+  <div class="container hero-content">
+    <h1>Find a place you’ll love to live in</h1>
+    <p>Smart search, zero fluff. Just clean listings that actually help.</p>
+    <button class="hero-cta">Start Exploring</button>
+  </div>
+</section>
+
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
+
